@@ -24,7 +24,7 @@ var customerSupportApp = angular
         function ($rootScope, configuration, ticketService) {
             ticketService.configs.get({}, {},
             function success(response) {
-                $rootScope.configs = response;
+                $rootScope.configs = response.data;
             },
             function failure(response) {
                 $rootScope.configs = {};
