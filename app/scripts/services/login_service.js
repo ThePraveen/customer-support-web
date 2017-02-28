@@ -18,21 +18,21 @@ customerSupportApp.factory('loginServices', ['$resource', 'configuration', funct
                     $rootScope.loadingView = false;
                     return true;
                 } else {
-                    //$http.defaults.headers.common['_SESSIONID'] = session_id;
-                    $http.post(configuration.authService + '/v1/sign_in')
-                        .then(function success(response) {
-                                $rootScope.loggedIn = true;
-                                $rootScope.user_name = response.data.name;
-                                $cookies.put("user_name",$rootScope.user_name);
-                                // $location.path(redirectUrl);
-                                return true;
-
-                            },
-                            function error(response) {
-                                $rootScope.loggedIn = false;
-                                $location.path('/login');
-                            }
-                        );
+                    $location.path('/login');
+                    // $http.post(configuration.authService + '/v1/sign_in')
+                    //     .then(function success(response) {
+                    //             $rootScope.loggedIn = true;
+                    //             $rootScope.user_name = response.data.name;
+                    //             $cookies.put("user_name",$rootScope.user_name);
+                    //             // $location.path(redirectUrl);
+                    //             return true;
+                    //
+                    //         },
+                    //         function error(response) {
+                    //             $rootScope.loggedIn = false;
+                    //             $location.path('/login');
+                    //         }
+                    //     );
                 }
             },
             checkAuthValid : function(redirectUrl){

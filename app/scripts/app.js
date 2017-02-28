@@ -18,20 +18,19 @@ var customerSupportApp = angular
         'ngTouch',
         'ngFileUpload',
         'ui.bootstrap',
-        'ui.bootstrap.datetimepicker'
     ])
-    .run(['$rootScope', 'configuration', 'ticketService',
-        function ($rootScope, configuration, ticketService) {
-            ticketService.configs.get({}, {},
-            function success(response) {
-                $rootScope.configs = response.data;
-            },
-            function failure(response) {
-                $rootScope.configs = {};
-                $rootScope.configs.issue_types = ["Complaint", "Request"]
-            }
-        )
-    }])
+    // .run(['$rootScope', 'configuration', 'ticketService',
+    //     function ($rootScope, configuration, ticketService) {
+    //         ticketService.configs.get({}, {},
+    //         function success(response) {
+    //             $rootScope.configs = response.data;
+    //         },
+    //         function failure(response) {
+    //             $rootScope.configs = {};
+    //             $rootScope.configs.issue_types = ["Complaint", "Request"]
+    //         }
+    //     )
+    // }])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
@@ -42,6 +41,11 @@ var customerSupportApp = angular
             .when('/my_issues', {
                 templateUrl: 'views/customer/my_issues.html',
                 controller: 'IssuesController'
+            })
+            .when('/login', {
+                templateUrl: 'views/login.html',
+                controller: 'LoginController',
+                controllerAs: 'login'
             })
             .when('/about', {
                 templateUrl: 'views/about.html',
