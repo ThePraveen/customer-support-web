@@ -4,7 +4,7 @@ customerSupportApp.factory('ticketService', ['$resource', 'configuration', funct
 
     return {
         configs: $resource(
-            configuration.ticketService + '/configs',
+            configuration.ticketServiceUrl + '/configs',
             {},
             {
                 get: {method: 'GET'},

@@ -25,7 +25,6 @@ customerSupportApp
 
                 $scope.allIssues =  [];
 
-                $scope.allIssues =  [];
                 $scope.fetchIssues = function (page_number_param) {
                     $rootScope.loadingView = true;
                     $scope.page_number = page_number_param;
@@ -33,7 +32,7 @@ customerSupportApp
 
                     var payload = {"page_number": page_number_param}
 
-                    $http.get(configuration.ticketService + '/issues')
+                    $http.get(configuration.ticketServiceUrl + '/issues')
                         .then(function success(response) {
                                 $rootScope.loadingView = false;
                                 $scope.allIssues =  response.data.data.issues;
