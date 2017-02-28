@@ -1,38 +1,40 @@
 <div id="preloader" ng-show="loadingView"></div>
-<div class="header">
-  <div class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Customer Support</a>
-      </div>
-
-      <div>
-        <ul id="header_list"  class="nav navbar-nav margin_50">
-          <li><a ng-href="/">Home </a></li>
-          <li><a href="#/my_issues">MyTickets</a></li>
-          <li><a href="#/new_ticket">+ New Ticket</a></li>
-        </ul>
-
-        <div class="dropdown pull-right" style="padding:12px 50px 0px 0px">
-          <span>Hi, {{current_user["name"]}}</span>
-
-          <div class="dropdown-content">
-            <p>
-              <span class="btn btn-danger btn-lg" ng-click="doLogout()">Logout
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
+<nav class="navbar navbar-default navbar-inverse" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">Customer Support</a>
   </div>
-</div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li><a href="/my_issues">My Tickets</a></li>
+      <li><a href="/new_ticket">New Ticket</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li ng-if="current_user == null"><a href="#/login">Login</a></li>
+      <li ng-if="current_user == null"><a href="#/register">Register</a></li>
+      <li ng-if="current_user != null" class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, {{current_user["name"]}} <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><a ng-click="doLogout()">MyProfile</a></li>
+            <li><a ng-click="doLogout()">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
 
 <script>
-  $(".nav li").on("click", function() {
-    $(".nav li").removeClass("active");
-    $(this).addClass("active");
-  });
+      $(".nav li").on("click", function() {
+          $(".nav li").removeClass("active");
+          $(this).addClass("active");
+      });
 </script>

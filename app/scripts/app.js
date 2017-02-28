@@ -21,15 +21,19 @@ var customerSupportApp = angular
     ])
     .run(['$cookies', '$rootScope',
         function ($cookies, $rootScope) {
-            $rootScope.current_user = JSON.parse($cookies.get("current_user"))
+            $rootScope.current_user=JSON.parse($cookies.get("current_user"));
         }])
-    .config(function ($routeProvider) {
+    .config(function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl',
                 controllerAs: 'main'
             })
+            .when('/new_issue', {
+                templateUrl: 'views/customer/new_issue.html',
+                controller: 'IssuesController'
+            })            
             .when('/my_issues', {
                 templateUrl: 'views/customer/my_issues.html',
                 controller: 'IssuesController'
@@ -39,11 +43,6 @@ var customerSupportApp = angular
                 controller: 'LoginController',
                 controllerAs: 'login'
             })
-            .when('/about', {
-                templateUrl: 'views/about.html',
-                controller: 'AboutCtrl',
-                controllerAs: 'about'
-            })
             .when('/health', {
                 templateUrl: 'views/health.html',
                 controller: 'HealthCtrl',
@@ -52,4 +51,5 @@ var customerSupportApp = angular
             .otherwise({
                 redirectTo: '/'
             });
+        $locationProvider.html5Mode(true);
     });
