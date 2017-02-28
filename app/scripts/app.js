@@ -39,6 +39,10 @@ var customerSupportApp = angular
                 controller: 'MainCtrl',
                 controllerAs: 'main'
             })
+            .when('/new_issue', {
+                templateUrl: 'views/customer/new_issue.html',
+                controller: 'IssuesController'
+            })            
             .when('/my_issues', {
                 templateUrl: 'views/customer/my_issues.html',
                 controller: 'IssuesController'
