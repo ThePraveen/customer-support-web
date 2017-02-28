@@ -19,18 +19,10 @@ var customerSupportApp = angular
         'ngFileUpload',
         'ui.bootstrap',
     ])
-    // .run(['$rootScope', 'configuration', 'ticketService',
-    //     function ($rootScope, configuration, ticketService) {
-    //         ticketService.configs.get({}, {},
-    //         function success(response) {
-    //             $rootScope.configs = response.data;
-    //         },
-    //         function failure(response) {
-    //             $rootScope.configs = {};
-    //             $rootScope.configs.issue_types = ["Complaint", "Request"]
-    //         }
-    //     )
-    // }])
+    .run(['$cookies', '$rootScope',
+        function ($cookies, $rootScope) {
+            $rootScope.current_user = JSON.parse($cookies.get("current_user"))
+        }])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {

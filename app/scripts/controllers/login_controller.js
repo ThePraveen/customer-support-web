@@ -11,23 +11,36 @@
 customerSupportApp
     .controller
     ('LoginController',
-        ['$scope', '$http', '$location','$rootScope', 'configuration',
-            function ($scope, $http, $location, $rootScope, configuration) {
+        ['$scope', '$http', '$location','$rootScope', '$cookies', 'configuration',
+            function ($scope, $http, $location, $rootScope, $cookies, configuration) {
                 $scope.email = ""
                 $scope.password = ""
 
-                $scope.submitLogin = function () {
+                $scope.submitLogin = function (redirect_url) {
                     var payload = {
-                        "email": $scope.email,
-                        "password": $scope.password
+                        "email": "admin@awign.com",
+                        "password": "11111111"
+                        // "email": $scope.email,
+                        // "password": $scope.password
                     }
 
                     $rootScope.loadingView = true;
-
                     $http.post(configuration.authServiceUrl + '/auth/sign_in', payload)
-                        .then(function success(response) {
+                        .then(function success(response){
                                 $rootScope.loadingView = false;
-                                $scope.current_user =  response.data;
+                                var user = response.data.data;
+                                var header = response.headers();
+                                var header_data =
+                                    {
+                                        'access-token': header['access-token'],
+                                        'client': header['client'],
+                                        'expiry': header['expiry'],
+                                        'uid': header['uid'],
+                                        'name': user['name'],
+                                        'id': user['id']
+                                    };
+                                $cookies.put("current_user", JSON.stringify(header_data));
+                                $location.path('/my_issues');
                             },
                             function error(response) {
                                 $rootScope.loadingView = false;

@@ -11,8 +11,8 @@
 customerSupportApp
     .controller
     ('IssuesController',
-        ['$scope', '$http', '$location','$rootScope', 'configuration',
-            function ($scope, $http, $location, $rootScope, configuration) {
+        ['$cookies', '$scope', '$http', '$location','$rootScope', 'configuration',
+            function ($cookies, $scope, $http, $location, $rootScope, configuration) {
 
                 // authService.authenticateUser(url);
 
