@@ -3,7 +3,9 @@ customerSupportApp.factory( 'AuthService', function() {
 
     return {
         login: function() {  },
-        logout: function() {  },
+        logout: function() {
+
+        },
         isLoggedIn: function() {  },
         currentUser: function() { return currentUser; }
     };

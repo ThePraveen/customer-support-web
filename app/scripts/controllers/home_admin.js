@@ -10,7 +10,7 @@
 
 customerSupportApp
     .controller
-    ('IssuesController',
+    ('HomeAdminController',
         ['$cookies', '$scope', '$http', '$location','$rootScope', 'configuration',
             function ($cookies, $scope, $http, $location, $rootScope, configuration) {
 

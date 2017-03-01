@@ -26,7 +26,7 @@
     <ng-include src="'views/includes/header.html'"></ng-include>
 
     <!-- Add your site or application content here -->
-    
+
     <div class="fill">
     <div ng-view=""></div>
     </div>
@@ -50,14 +50,14 @@
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
+
+    <script src="scripts/controllers/landing.js"></script>
+    <script src="scripts/controllers/home_customer.js"></script>
+    <script src="scripts/controllers/home_admin.js"></script>
+    <script src="scripts/controllers/home_executive.js"></script>
+    <script src="scripts/controllers/navigation.js"></script>
+
     <script src="scripts/config.js"></script>
-
-    <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/about.js"></script>
-    <script src="scripts/controllers/issues_controller.js"></script>
-    <script src="scripts/controllers/login_controller.js"></script>
-    <script src="scripts/controllers/health.js"></script>
-
     <script src="scripts/services/auth_service.js"></script>
     <script src="scripts/services/ticket_service.js"></script>
     <script src="scripts/services/login_service.js"></script>

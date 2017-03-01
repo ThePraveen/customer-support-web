@@ -1,0 +1,39 @@
+<div class="jumbotron welcome-screen">
+  <h1>Welcome to Customer Support</h1>
+  <p class="lead">
+    Always a pleasure serving you.
+  </p>
+  <p><a class="btn btn-primary" ng-href="#/login">Get started</a></p>
+
+  <!--<div ng-if="current_user==null">-->
+    <form ng-submit="submitLogin()">
+      <div class="imgcontainer">
+        <img src="images/yeoman.png" alt="Avatar" class="avatar">
+      </div>
+
+      <div class="container">
+        <label><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" ng-model="email" required>
+
+        <label><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" ng-model="password" required>
+
+        <label><b>Login As</b></label>
+        <select ng-model="role" ng-options="role as role for role in roles"></select>
+
+
+        <button type="submit">Login</button>
+        <input type="checkbox" checked="checked"> Remember me</div>
+
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
+  <!--</div>-->
+</div>
+
+
+<div class="row marketing">
+  <span ng-if="error != null" >{{error}}</span>
+</div>
