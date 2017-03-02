@@ -21,7 +21,7 @@ var customerSupportApp = angular
     ])
     .run(['$cookies', '$rootScope',
         function ($cookies, $rootScope) {
-            $rootScope.current_user=JSON.parse($cookies.get("current_user"));
+           // $rootScope.current_user = JSON.parse($cookies.get("current_user"));
         }])
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider
