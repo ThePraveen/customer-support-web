@@ -21,32 +21,27 @@ var customerSupportApp = angular
     ])
     .run(['$cookies', '$rootScope',
         function ($cookies, $rootScope) {
-           // $rootScope.current_user = JSON.parse($cookies.get("current_user"));
+            if($cookies.get("current_user") != null){
+                $rootScope.current_user = JSON.parse($cookies.get("current_user"));
+            }
         }])
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/main.html',
-                controller: 'MainCtrl',
-                controllerAs: 'main'
+                templateUrl: 'views/landing.html',
+                controller: 'LandingController'
             })
-            .when('/new_issue', {
-                templateUrl: 'views/customer/new_issue.html',
-                controller: 'IssuesController'
-            })            
-            .when('/my_issues', {
-                templateUrl: 'views/customer/my_issues.html',
-                controller: 'IssuesController'
+            .when('/customer', {
+                templateUrl: 'views/customer/home.html',
+                controller: 'HomeCustomerController'
             })
-            .when('/login', {
-                templateUrl: 'views/login.html',
-                controller: 'LoginController',
-                controllerAs: 'login'
+            .when('/executive', {
+                templateUrl: 'views/executive/home.html',
+                controller: 'HomeExecutiveController'
             })
-            .when('/health', {
-                templateUrl: 'views/health.html',
-                controller: 'HealthCtrl',
-                controllerAs: 'health'
+            .when('/admin', {
+                templateUrl: 'views/admin/home.html',
+                controller: 'HomeExecutiveController'
             })
             .otherwise({
                 redirectTo: '/'
