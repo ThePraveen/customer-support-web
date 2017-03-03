@@ -1,27 +1,5 @@
 <div id="preloader" ng-show="loadingView">
 </div>
-
-
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav">
-      <li><a href="/my_issues">My Tickets</a></li>
-      <li><a href="/new_issue">New Ticket</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li ng-if="current_user == null"><a href="#/login">Login</a></li>
-      <li ng-if="current_user == null"><a href="#/register">Register</a></li>
-      <li ng-if="current_user != null" class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, {{current_user["name"]}} <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-            <li><a ng-click="doLogout()">MyProfile</a></li>
-            <li><a ng-click="doLogout()">Logout</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</nav>
-
 <div ng-controller="NavigationController">
     <nav class="navbar navbar-default navbar-inverse" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -38,13 +16,23 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="/customer">My Tickets</a></li>
+                <li ng-if="current_user != null">
+                  <a href="/customer/new_issue">New Ticket</a>
+                </li>
+                <li ng-if="current_user != null">
+                  <a href="/customer">My Tickets</a>
+                </li>
+                <li>
+                  <a href="/executive">E-My Tickets</a>
+                </li>
+                <li>
+                  <a href="/admin">A-My Tickets</a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li ng-if="current_user != null" class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, {{current_user["name"]}} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a>MyProfile</a></li>
                         <li><a ng-click="logout()">Logout</a></li>
                     </ul>
                 </li>

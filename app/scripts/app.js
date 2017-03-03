@@ -35,6 +35,10 @@ var customerSupportApp = angular
                 templateUrl: 'views/customer/home.html',
                 controller: 'HomeCustomerController'
             })
+            .when('/customer/new_issue', {
+                templateUrl: 'views/customer/new_issue.html',
+                controller: 'HomeCustomerController'
+            })
             .when('/executive', {
                 templateUrl: 'views/executive/home.html',
                 controller: 'HomeExecutiveController'
