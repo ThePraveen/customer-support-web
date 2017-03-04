@@ -4,8 +4,8 @@
     Always a pleasure serving you.
   </p>
 </div>
-<div class="col-md-4 col-md-offset-4 well text-left mt-10-sm" style="margin-top: -80px;">
-  <form ng-submit="submitLogin()">
+<div class="col-md-4 col-md-offset-4 well text-left mt-10-sm mb-50" style="margin-top: -80px;">
+  <form ng-submit="submitLogin()" class="signin">
     <div class="text-center">
       <span class="text-danger" ng-if="error != null" >{{error}}</span>
     </div>
@@ -27,7 +27,53 @@
     </div>
     <div class="col-md-12 mt-20">
       <button type="submit" class="btn btn-primary">Login</button>
-      <small class="psw pull-right">Forgot <a href="#">password?</a></small>
+      <small class="psw pull-right" onclick="$('.register').hide();$('.signin').hide();$('.forgot-password').show();">Forgot password?</a></small>
+    </div>
+    <div class="col-md-12 mt-20 text-center">
+      <small onclick="$('.register').show();$('.signin').hide();$('.forgot-password').hide();" class="cursor">Not a member yet? Register Here</small>
+    </div>
+  </form>
+  <form ng-submit="submitLogin()" class="register" style="display: none;">
+    <div class="text-center">
+      <span class="text-danger" ng-if="error != null" >{{error}}</span>
+    </div>
+    <div class="col-md-12 mt-10">
+      <label><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" class="form-control" ng-model="email" required>
+    </div>
+    <div class="col-md-12 mt-10">
+      <label><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" class="form-control" ng-model="password" required>
+    </div>
+    <div class="col-md-12 mt-10">
+      <label><b>Password</b></label>
+      <input type="password" placeholder="Confirm Password" class="form-control" ng-model="password" required>
+    </div>
+    <div class="col-md-12 mt-10">
+      <label><b>Register As</b></label>
+      <select ng-model="role" ng-options="role as role for role in roles" class="form-control">
+      </select>
+    </div>
+    <div class="col-md-12 mt-20">
+      <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+    <div class="col-md-12 mt-20 text-center">
+      <small onclick="$('.signin').show();$('.register').hide();$('.forgot-password').hide();" class="cursor">Already a member? Click here</small>
+    </div>
+  </form>
+  <form ng-submit="submitLogin()" class="forgot-password" style="display: none;">
+    <div class="text-center">
+      <span class="text-danger" ng-if="error != null" >{{error}}</span>
+    </div>
+    <div class="col-md-12 mt-10">
+      <label><b>Type your email</b></label>
+      <input type="text" placeholder="Enter Email" class="form-control" ng-model="email" required>
+    </div>
+    <div class="col-md-12 mt-20">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    <div class="col-md-12 mt-20 text-center">
+      <small onclick="$('.signin').show();$('.register').hide();$('.forgot-password').hide();" class="cursor">Already a member? Click here</small>
     </div>
   </form>
 </div>
