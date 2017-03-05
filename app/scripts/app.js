@@ -59,6 +59,10 @@ var customerSupportApp = angular
                 templateUrl: 'views/admin/home.html',
                 controller: 'HomeAdminController'
             })
+            .when('/users', {
+                templateUrl: 'views/admin/users.html',
+                controller: 'HomeAdminController'
+            })
             .otherwise({
                 redirectTo: '/'
             });

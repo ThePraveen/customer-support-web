@@ -28,6 +28,9 @@
                 <li ng-if="current_user != null && current_user['role'] == 'admin' ">
                   <a href="/admin">Tickets</a>
                 </li>
+                <li ng-if="current_user != null && current_user['role'] == 'admin' ">
+                  <a href="/users">Users</a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li ng-if="current_user != null" class="dropdown">
