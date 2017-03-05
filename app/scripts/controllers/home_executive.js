@@ -20,7 +20,7 @@ customerSupportApp
 
         $scope.fetchIssues = function (page_number_param) {
           $rootScope.loadingView = true;
-          $http.get(configuration.ticketServiceUrl + '/issues')
+          $http.get(configuration.ticketServiceUrl + '/issues?exeutive_id=' + $rootScope.current_user['exeutive']['id'])
             .then(function success(response) {
                 $rootScope.loadingView = false;
                 $scope.allIssues =  response.data.data.issues;
