@@ -39,9 +39,21 @@ var customerSupportApp = angular
                 templateUrl: 'views/customer/new_issue.html',
                 controller: 'HomeCustomerController'
             })
+            .when('/customer/issues/:id', {
+                templateUrl: 'views/customer/show.html',
+                controller: 'ShowCustomerController'
+            })
             .when('/executive', {
                 templateUrl: 'views/executive/home.html',
                 controller: 'HomeExecutiveController'
+            })
+            .when('/executive/issues/:id', {
+                templateUrl: 'views/customer/show.html',
+                controller: 'ShowExecutiveController'
+            })
+            .when('/admins/issues/:id', {
+                templateUrl: 'views/customer/show.html',
+                controller: 'ShowAdminController'
             })
             .when('/admin', {
                 templateUrl: 'views/admin/home.html',

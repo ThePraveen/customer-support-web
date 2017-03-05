@@ -1,0 +1,25 @@
+<div class="row" ng-controller="ShowExecutiveController" ng-init="fetchIssues()">
+  <div class="mt-50">
+  <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12 well-div">
+    <div class="text-center">
+      <div ng-if="getallAgenciesError" class="alert" ng-class="alert-danger">
+        <span > {{getallAgenciesError}}</span>
+      </div>
+    </div>
+    <div class="text-left">
+      <h4 class="mt-20">{{issue.title}}</h4>
+      <p class="mt-10">{{issue.description}}</p>
+      <h6>Comments</h6>
+      <p class="mt-30">{{}}</p>
+      <div class="mt-10">
+        <form>
+          <label>Assign to</label>
+          <select>
+            <option>Executive</option>
+          </select>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
