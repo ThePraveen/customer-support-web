@@ -24,12 +24,14 @@ customerSupportApp
 
         // submit login method
         $scope.submitLogin = function () {
+          
           if($scope.role == null){
             $rootScope.error = "Choose a role to login";
             return
           }
 
           $scope.role = $scope.role.toLowerCase();
+
           var payload = {
             "email": $scope.email,
             "password": $scope.password,
@@ -41,6 +43,7 @@ customerSupportApp
           $http.post(configuration.authServiceUrl + '/auth/sign_in', payload)
             .then(function success(response){
                 $rootScope.loadingView = false;
+
                 var user = response.data.data;
                 var header = response.headers();
                 var header_data =
@@ -51,12 +54,16 @@ customerSupportApp
                     'uid': header['uid'],
                     'name': user['name'],
                     'id': user['id'],
-                    'role': $scope.role
+                    'role': $scope.role,
+                    'customer': user.customer,
+                    'executive': user.executive,
+                    'admin': user.admin
                   };
-                $cookies.put("current_user", JSON.stringify(header_data));
-                console.log($cookies.get("current_user"))
-                $rootScope.current_user = JSON.parse($cookies.get("current_user"));
 
+                $cookies.put("current_user", JSON.stringify(header_data));
+
+                $rootScope.current_user = JSON.parse($cookies.get("current_user"));
+                
                 switch($scope.role) {
                   case "customer":
                     console.log("redirecting to /customer")

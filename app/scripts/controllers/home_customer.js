@@ -18,9 +18,10 @@ customerSupportApp
 
                 $scope.allIssues =  [];
 
-                $scope.fetchIssues = function (page_number_param) {
+                $scope.fetchIssues = function () {
                     $rootScope.loadingView = true;
-                    $http.get(configuration.ticketServiceUrl + '/issues')
+
+                    $http.get(configuration.ticketServiceUrl + '/issues?customer_id=' + $rootScope.current_user['customer']['id'])
                         .then(function success(response) {
                                 $rootScope.loadingView = false;
                                 $scope.allIssues =  response.data.data.issues;
@@ -34,17 +35,20 @@ customerSupportApp
 
                 $scope.createIssue = function () {
                     var paylod = {
-                        "customer_id": $rootScope.current_user['customer_id'],
+                        "customer_id": $rootScope.current_user['customer']['id'],
                         "title": $scope.title,
                         "description": $scope.description
                     }
-                    $http.post(configuration.ticketServiceUrl + '/issues')
+                    $http.post(configuration.ticketServiceUrl + '/issues', paylod)
                         .then(function success(response) {
+                                $scope.title = ""
+                                $scope.description = ""                                
                                 $rootScope.loadingView = false;
-                                $scope.allIssues =  response.data.data.issues;
+                                $rootScope.success = response.data.data.message;
                             },
                             function error(response) {
                                 $rootScope.loadingView = false;
+                                $rootScope.error = "Failed to create Issue";
                             }
                         )
 
