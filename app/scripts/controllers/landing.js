@@ -24,9 +24,12 @@ customerSupportApp
 
         // submit login method
         $scope.submitLogin = function () {
-          console.log($scope);
-          $scope.role = $scope.role.toLowerCase();
+          if($scope.role == null){
+            $rootScope.error = "Choose a role to login";
+            return
+          }
 
+          $scope.role = $scope.role.toLowerCase();
           var payload = {
             "email": $scope.email,
             "password": $scope.password,
@@ -47,9 +50,11 @@ customerSupportApp
                     'expiry': header['expiry'],
                     'uid': header['uid'],
                     'name': user['name'],
-                    'id': user['id']
+                    'id': user['id'],
+                    'role': $scope.role
                   };
                 $cookies.put("current_user", JSON.stringify(header_data));
+                console.log($cookies.get("current_user"))
                 $rootScope.current_user = JSON.parse($cookies.get("current_user"));
 
                 switch($scope.role) {

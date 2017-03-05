@@ -16,17 +16,17 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li ng-if="current_user != null">
+                <li ng-if="current_user != null && current_user['role'] == 'customer' ">
                   <a href="/customer/new_issue">New Ticket</a>
                 </li>
-                <li ng-if="current_user != null">
+                <li ng-if="current_user != null && current_user['role'] == 'customer' ">
                   <a href="/customer">My Tickets</a>
                 </li>
-                <li>
-                  <a href="/executive">E-My Tickets</a>
+                <li ng-if="current_user != null && current_user['role'] == 'executive' ">
+                  <a href="/executive">Tickets</a>
                 </li>
-                <li>
-                  <a href="/admin">A-My Tickets</a>
+                <li ng-if="current_user != null && current_user['role'] == 'admin' ">
+                  <a href="/admin">Tickets</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

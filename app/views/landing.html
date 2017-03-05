@@ -19,16 +19,14 @@
     </div>
     <div class="col-md-12 mt-10">
       <label><b>Login As</b></label>
-      <select ng-model="role" ng-options="role as role for role in roles" class="form-control">
+      <select ng-model="role" ng-options="role as role for role in roles" class="form-control" required>
       </select>
-    </div>
-    <div class="col-md-12 mt-10">
-      <input type="checkbox" checked="checked"> Remember me
     </div>
     <div class="col-md-12 mt-20">
       <button type="submit" class="btn btn-primary">Login</button>
       <small class="psw pull-right" onclick="$('.register').hide();$('.signin').hide();$('.forgot-password').show();">Forgot password?</a></small>
     </div>
+
     <div class="col-md-12 mt-20 text-center">
       <small onclick="$('.register').show();$('.signin').hide();$('.forgot-password').hide();" class="cursor">Not a member yet? Register Here</small>
     </div>
